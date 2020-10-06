@@ -25,6 +25,8 @@ from teamcity import diff_tools
 
 diff_tools.patch_unittest_diff()
 
+OUTPUT = sys.stdout
+
 
 def unformat_pytest_explanation(s):
     """
@@ -134,7 +136,7 @@ class EchoTeamCityMessages(object):
         self.output_capture_enabled = output_capture_enabled
         self.skip_passed_output = skip_passed_output
 
-        self.teamcity = TeamcityServiceMessages()
+        self.teamcity = TeamcityServiceMessages(output=OUTPUT)
         self.test_start_reported_mark = set()
 
         self.max_reported_output_size = 1 * 1024 * 1024
